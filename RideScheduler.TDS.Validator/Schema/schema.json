@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TDS TRCPSchema v0.1",
+  "description": "Based on XML Schema v0.8",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "tripStatusChange": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tripTicketId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [ "Cancel", "Expire" ]
+        },
+        "reasonDescription": {
+          "type": "string"
+        },
+        "canceledBy": {
+          "type": "string",
+          "enum": [ "OrderingClient", "Rider", "Provider" ]
+        }
+      },
+      "required": [
+        "tripTicketId",
+        "status",
+        "canceledBy"
+      ]
+    }
+  }
+}
