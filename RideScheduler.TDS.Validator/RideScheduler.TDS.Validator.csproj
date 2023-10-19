@@ -16,12 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="SampleJSON\addressType.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="SampleJSON\timeType.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="SampleJSON\tripRequest.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
