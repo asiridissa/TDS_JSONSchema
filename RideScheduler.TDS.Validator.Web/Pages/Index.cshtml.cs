@@ -35,17 +35,25 @@ namespace RideScheduler.TDS.Validator.Web.Pages
 
         public static (bool?, List<ValidationError>) JsonValidate(string message)
         {
-            string schemaJson = System.IO.File.ReadAllText(Path.Combine(Directory.GetParent(System.Reflection.Assembly.GetEntryAssembly().Location).FullName, "Schema\\schema.json"));
+            try
+            {
+                string schemaJson = System.IO.File.ReadAllText(Path.Combine(Directory.GetParent(System.Reflection.Assembly.GetEntryAssembly().Location).FullName, "Schema\\schema.json"));
 
-            // load schema
-            JSchema schema = JSchema.Parse(schemaJson);
-            JToken json = JToken.Parse(message);
+                // load schema
+                JSchema schema = JSchema.Parse(schemaJson);
+                JToken json = JToken.Parse(message);
 
-            // validate json
-            bool valid = json.IsValid(schema, out IList<ValidationError> errors);
+                // validate json
+                bool valid = json.IsValid(schema, out IList<ValidationError> errors);
 
-            // return error messages and line info to the browser
-            return (valid, errors.ToList());
+                // return error messages and line info to the browser
+                return (valid, errors.ToList());
+
+            }
+            catch (Exception e)
+            {
+                return (false, new List<ValidationError>(){new ValidationError(){ }});
+            }
         }
 
         public ActionResult OnPostDownload()
