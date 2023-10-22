@@ -1,10 +1,96 @@
 ﻿@page
+@using Newtonsoft.Json.Schema
+@using Newtonsoft.Json
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "TDS Validator : By RideScheduler";
+    (bool?, List<ValidationError>) validation = ((bool?, List<ValidationError>))(ViewData["Validation"] ?? ((bool?)null, new List<ValidationError>()));
+}
+<style>
+    .CodeMirror {
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        min-height: 500px;
+    }
+</style>
+<form method="post" asp-page-handler="Download">
+    <div style="text-align: right"><button class="btn btn-link" type="submit">Download</button></div>
+</form>
+<form method="post">
+    <div class="text-center">
+        <h1 class="display-4">TDS Validator</h1>
+    </div>
+    <textarea id="code" name="code" class="border-dark">@ViewData["Code"]</textarea>
+    <div style="text-align: right; margin: 10px 0;">
+        <button type="submit" class="btn btn-lg btn-primary ">Validate</button>
+        <a class="btn btn-lg btn-outline-danger" href="~/">Reset</a>
+    </div>
+    <div style="text-align: center; margin: 10px 0;">
+        <img src="~/img/poweredby.png" />
+    </div>
+</form>
+
+@functions
+{
+    string GetValidateWrapperClass(bool? valid)
+    {
+        return valid switch
+        {
+            true => "alert-success",
+            false => "alert-danger",
+            _ => ""
+        };
+    }
+
+    string GetValidateTitle(bool? valid)
+    {
+        return valid switch
+        {
+            true => "<h4>Valid JSON</h4>",
+            false => "<h4>Validation Failed</h4>",
+            _ => ""
+        };
+    }
+
+
+    void BuildMessage(ValidationError i)
+    {
+        Type? valTtype = i?.Value?.GetType();
+        <li>
+            <div>@i.SchemaId @i.ErrorType (Line @i.LineNumber, Pos @i.LinePosition)</div>
+            <div style="margin-left: 20px"><b>@i.Message</b></div>
+            <div style="margin-left: 40px">
+                @i.Path:
+                @switch (true)
+                {
+                    case true when valTtype == typeof(List<string>):
+                        <span>@JsonConvert.SerializeObject(i.Value)</span>
+                        break;
+                    default:
+                        <span>@i.Value?.ToString()</span>
+                        break;
+                }
+            </div>
+        </li>
+    }
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="alert @GetValidateWrapperClass(validation.Item1)">
+    @Html.Raw(GetValidateTitle(validation.Item1))
+    <ul>
+        @foreach (var i in validation.Item2)
+        {
+            BuildMessage(i);
+        }
+    </ul>
 </div>
+
+<script>
+    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        continueComments: "Enter",
+        mode: "JSON",
+        extraKeys: { "Ctrl-Q": "toggleComment" }
+    });
+</script>
