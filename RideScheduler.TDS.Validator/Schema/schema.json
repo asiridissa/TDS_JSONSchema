@@ -3,6 +3,7 @@
   "title": "TDS TRCPSchema v0.1",
   "description": "Based on XML Schema tcrp.demandtrans.com_TCRPSchema V0.8-proposed",
   "type": "object",
+  "additionalProperties": false,
   "properties": {
 
     "tripStatusChange": {
