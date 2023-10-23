@@ -1,10 +1,15 @@
 ﻿@page
 @using Newtonsoft.Json.Schema
 @using Newtonsoft.Json
+@using Newtonsoft.Json.Linq
 @model IndexModel
 @{
     ViewData["Title"] = "TDS Validator : By RideScheduler";
     (bool?, List<ValidationError>) validation = ((bool?, List<ValidationError>))(ViewData["Validation"] ?? ((bool?)null, new List<ValidationError>()));
+    string schemaJson = System.IO.File.ReadAllText(System.IO.Path.Combine(Directory.GetParent(System.Reflection.Assembly.GetEntryAssembly().Location).FullName, "Schema\\schema.json"));
+    JToken json = JToken.Parse(schemaJson);
+    var title = json["title"].Value<string>();
+    var description = json["description"].Value<string>();
 }
 <style>
     .CodeMirror {
@@ -18,7 +23,17 @@
 </form>
 <form method="post">
     <div class="text-center">
-        <h1 class="display-4">TDS Validator</h1>
+        <table style="width: 100%;">
+            <tr >
+                <td rowspan="2" >
+                    <h1 class="display-4">TDS Validator</h1>
+                </td>
+                <td ><h5>@title</h5></td>
+            </tr>
+            <tr >
+                <td >@description</td>
+            </tr>
+        </table>
     </div>
     <textarea id="code" name="code" class="border-dark">@ViewData["Code"]</textarea>
     <div style="text-align: right; margin: 10px 0;">
