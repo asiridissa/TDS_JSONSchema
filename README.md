@@ -9,4 +9,7 @@
 ## Swagger
 - https://app.swaggerhub.com/apis/full-path/RideNoCo-TDS
 
-![Build](https://vsrm.dev.azure.com/EdgeFish/_apis/public/Release/badge/79f3e50b-abcf-4ee3-a4de-7ae05d447156/18/41)
+## Validator Online
+- [tdsvalidator.com/](http://tdsvalidator.com) 
+
+- ![Build](https://vsrm.dev.azure.com/EdgeFish/_apis/public/Release/badge/79f3e50b-abcf-4ee3-a4de-7ae05d447156/18/41)
