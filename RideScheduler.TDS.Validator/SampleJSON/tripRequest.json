@@ -1,132 +1,134 @@
 {
-	"tripTicketId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-	"pickupAddress": {
-		"addressName": "McDonalds",
-		"street": "string",
-		"street2": 0,
-		"notes": "Green door around the back",
-		"city": "string",
-		"state": "string",
-		"postalCode": "string",
-		"country": "string",
-		"lat": 0,
-		"long": 0
-	},
-	"detailedPickupLocationDescription": "string",
-	"dropoffAddress": {
-		"addressName": "McDonalds",
-		"street": "string",
-		"street2": 0,
-		"notes": "Green door around the back",
-		"city": "string",
-		"state": "string",
-		"postalCode": "string",
-		"country": "string",
-		"lat": 0,
-		"long": 0
-	},
-	"detailedDropoffLocationDescription": "string",
-	"pickupTime": {
-		"TimeAccuracy": "string",
-		"time": "2023-10-18T15:07:02.268Z",
-		"DwellTime": 0,
-		"TimeType": "Time2101"
-	},
-	"appointmentTime": {
-		"TimeAccuracy": "string",
-		"time": "2023-10-18T15:07:02.269Z",
-		"DwellTime": 0,
-		"TimeType": "Time2101"
-	},
-	"dropoffTime": {
-		"TimeAccuracy": "string",
-		"time": "2023-10-18T15:07:02.269Z",
-		"DwellTime": 0,
-		"TimeType": "Time2101"
-	},
-	"pickupWindowStartTime": {
-		"TimeAccuracy": "string",
-		"time": "2023-10-18T15:07:02.269Z",
-		"DwellTime": 0,
-		"TimeType": "Time2101"
-	},
-	"pickupWindowEndTime": {
-		"TimeAccuracy": "string",
-		"time": "2023-10-18T15:07:02.269Z",
-		"DwellTime": 0,
-		"TimeType": "Time2101"
-	},
-	"detoursPermissible": true,
-	"negotiatedPickupTime": {
-		"TimeAccuracy": "string",
-		"time": "2023-10-18T15:07:02.269Z",
-		"DwellTime": 0,
-		"TimeType": "Time2101"
-	},
-	"hardConstraintOnPickupTime": true,
-	"hardConstraintOnDropoffTime": true,
-	"customerInfo": {
-		"tripTicketId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-		"firstLegalName": "string",
-		"nickName": "string",
-		"middleName": "string",
-		"lastName": "string",
-		"address": {
-			"addressName": "McDonalds",
-			"street": "string",
-			"street2": 0,
-			"notes": "Green door around the back",
-			"city": "string",
-			"state": "string",
-			"postalCode": "string",
-			"country": "string",
-			"lat": 0,
-			"long": 0
-		},
-		"phone": 0,
-		"mobilePhone": 0,
-		"mailingBillingAddress": {
-			"addressName": "McDonalds",
-			"street": "string",
-			"street2": 0,
-			"notes": "Green door around the back",
-			"city": "string",
-			"state": "string",
-			"postalCode": "string",
-			"country": "string",
-			"lat": 0,
-			"long": 0
-		},
-		"fundingEntityBillingInformation": "string",
-		"fundingType": true,
-		"fundingEntityId": "string",
-		"gender": "string",
-		"lowIncome": true,
-		"disability": true,
-		"language": "string",
-		"race": "string",
-		"ethnicity": true,
-		"emailAddress": "string",
-		"veteran": "string",
-		"caregiverContactInformation": "string",
-		"emergencyPhoneNumber": 0,
-		"emergencyContactName": "string",
-		"emergencyContactRelationship": "string",
-		"requiredCareComments": "string",
-		"dateOfBirth": "2023-10-18",
-		"customerId": "string",
-		"notesForDriver": "string"
-	},
-	"specialAttributes": [
-		"A"
-	],
-	"transportServices": [
-		"string"
-	],
-	"numOtherReservedPassengers": 0,
-	"openAttribute": "string",
-	"tripPurpose": [
-		"A"
-	],
-	"notesForDriver": "string"
+  "tripRequest": {
+    "tripTicketId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "pickupAddress": {
+      "addressName": "McDonalds",
+      "street": "string",
+      "street2": 0,
+      "notes": "Green door around the back",
+      "city": "string",
+      "state": "string",
+      "postalCode": "string",
+      "country": "string",
+      "lat": 0,
+      "long": 0
+    },
+    "detailedPickupLocationDescription": "string",
+    "dropoffAddress": {
+      "addressName": "McDonalds",
+      "street": "string",
+      "street2": 0,
+      "notes": "Green door around the back",
+      "city": "string",
+      "state": "string",
+      "postalCode": "string",
+      "country": "string",
+      "lat": 0,
+      "long": 0
+    },
+    "detailedDropoffLocationDescription": "string",
+    "pickupTime": {
+      "TimeAccuracy": "string",
+      "time": "2023-10-18T15:07:02.268Z",
+      "DwellTime": 0,
+      "TimeType": "Time2101"
+    },
+    "appointmentTime": {
+      "TimeAccuracy": "string",
+      "time": "2023-10-18T15:07:02.269Z",
+      "DwellTime": 0,
+      "TimeType": "Time2101"
+    },
+    "dropoffTime": {
+      "TimeAccuracy": "string",
+      "time": "2023-10-18T15:07:02.269Z",
+      "DwellTime": 0,
+      "TimeType": "Time2101"
+    },
+    "pickupWindowStartTime": {
+      "TimeAccuracy": "string",
+      "time": "2023-10-18T15:07:02.269Z",
+      "DwellTime": 0,
+      "TimeType": "Time2101"
+    },
+    "pickupWindowEndTime": {
+      "TimeAccuracy": "string",
+      "time": "2023-10-18T15:07:02.269Z",
+      "DwellTime": 0,
+      "TimeType": "Time2101"
+    },
+    "detoursPermissible": true,
+    "negotiatedPickupTime": {
+      "TimeAccuracy": "string",
+      "time": "2023-10-18T15:07:02.269Z",
+      "DwellTime": 0,
+      "TimeType": "Time2101"
+    },
+    "hardConstraintOnPickupTime": true,
+    "hardConstraintOnDropoffTime": true,
+    "customerInfo": {
+      "tripTicketId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "firstLegalName": "string",
+      "nickName": "string",
+      "middleName": "string",
+      "lastName": "string",
+      "address": {
+        "addressName": "McDonalds",
+        "street": "string",
+        "street2": 0,
+        "notes": "Green door around the back",
+        "city": "string",
+        "state": "string",
+        "postalCode": "string",
+        "country": "string",
+        "lat": 0,
+        "long": 0
+      },
+      "phone": 0,
+      "mobilePhone": 0,
+      "mailingBillingAddress": {
+        "addressName": "McDonalds",
+        "street": "string",
+        "street2": 0,
+        "notes": "Green door around the back",
+        "city": "string",
+        "state": "string",
+        "postalCode": "string",
+        "country": "string",
+        "lat": 0,
+        "long": 0
+      },
+      "fundingEntityBillingInformation": "string",
+      "fundingType": true,
+      "fundingEntityId": "string",
+      "gender": "string",
+      "lowIncome": true,
+      "disability": true,
+      "language": "string",
+      "race": "string",
+      "ethnicity": true,
+      "emailAddress": "string",
+      "veteran": "string",
+      "caregiverContactInformation": "string",
+      "emergencyPhoneNumber": 0,
+      "emergencyContactName": "string",
+      "emergencyContactRelationship": "string",
+      "requiredCareComments": "string",
+      "dateOfBirth": "2023-10-18",
+      "customerId": "string",
+      "notesForDriver": "string"
+    },
+    "specialAttributes": [
+      "A"
+    ],
+    "transportServices": [
+      "string"
+    ],
+    "numOtherReservedPassengers": 0,
+    "openAttribute": "string",
+    "tripPurpose": [
+      "A"
+    ],
+    "notesForDriver": "string"
+  }
 }
