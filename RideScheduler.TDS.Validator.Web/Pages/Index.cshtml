@@ -6,7 +6,7 @@
 @{
     ViewData["Title"] = "TDS Validator : By RideScheduler";
     (bool?, List<ValidationError>) validation = ((bool?, List<ValidationError>))(ViewData["Validation"] ?? ((bool?)null, new List<ValidationError>()));
-    string schemaJson = System.IO.File.ReadAllText(System.IO.Path.Combine(Directory.GetParent(System.Reflection.Assembly.GetEntryAssembly().Location).FullName, "Schema\\schema.json"));
+    string schemaJson = JSON.GetSchema();
     JToken json = JToken.Parse(schemaJson);
     var title = json["title"].Value<string>();
     var description = json["description"].Value<string>();

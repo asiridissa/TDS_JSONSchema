@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 
+using System.Net;
+using System.Text;
+
 namespace RideScheduler.TDS.Validator.Web.Pages
 {
     public class IndexModel : PageModel
@@ -37,7 +40,7 @@ namespace RideScheduler.TDS.Validator.Web.Pages
         {
             try
             {
-                string schemaJson = System.IO.File.ReadAllText(Path.Combine(Directory.GetParent(System.Reflection.Assembly.GetEntryAssembly().Location).FullName, "Schema\\schema.json"));
+                var schemaJson = JSON.GetSchema();
 
                 // load schema
                 JSchema schema = JSchema.Parse(schemaJson);
@@ -52,13 +55,13 @@ namespace RideScheduler.TDS.Validator.Web.Pages
             }
             catch (Exception e)
             {
-                return (false, new List<ValidationError>(){new ValidationError(){ }});
+                return (false, new List<ValidationError>() { new ValidationError() { } });
             }
         }
 
         public ActionResult OnPostDownload()
         {
-            var schemaJson = System.IO.File.ReadAllBytes(Path.Combine(Directory.GetParent(System.Reflection.Assembly.GetEntryAssembly().Location).FullName, "Schema\\schema.json"));
+            var schemaJson = Encoding.Unicode.GetBytes(JSON.GetSchema());
             return File(schemaJson, "application/octet-stream", "schema.json");
         }
     }

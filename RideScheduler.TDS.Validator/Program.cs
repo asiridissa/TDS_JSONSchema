@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Net;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 
 namespace RideScheduler.TDS.Validator
@@ -15,7 +17,7 @@ namespace RideScheduler.TDS.Validator
 
         public static (bool, List<ValidationError>) JsonValidate(string message)
         {
-            string schemaJson = File.ReadAllText("Schema/schema.json");
+            string schemaJson = JSON.GetSchema();
 
             // load schema
             JSchema schema = JSchema.Parse(schemaJson);
