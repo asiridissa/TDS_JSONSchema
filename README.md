@@ -6,3 +6,5 @@
 - [https://json-schema.org/implementations#validators](https://json-schema.org/implementations#validators)
 ## Docs
 - [https://www.learnjsonschema.com/2020-12/](https://www.learnjsonschema.com/2020-12/)
+## Swagger
+- https://app.swaggerhub.com/apis/full-path/RideNoCo-TDS
