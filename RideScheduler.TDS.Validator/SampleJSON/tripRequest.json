@@ -4,7 +4,7 @@
     "pickupAddress": {
       "addressName": "McDonalds",
       "street": "string",
-      "street2": 0,
+      "street2": null,
       "notes": "Green door around the back",
       "city": "string",
       "state": "string",
@@ -17,7 +17,7 @@
     "dropoffAddress": {
       "addressName": "McDonalds",
       "street": "string",
-      "street2": 0,
+      "street2": null,
       "notes": "Green door around the back",
       "city": "string",
       "state": "string",
@@ -75,7 +75,7 @@
       "address": {
         "addressName": "McDonalds",
         "street": "string",
-        "street2": 0,
+        "street2": null,
         "notes": "Green door around the back",
         "city": "string",
         "state": "string",
@@ -89,7 +89,7 @@
       "mailingBillingAddress": {
         "addressName": "McDonalds",
         "street": "string",
-        "street2": 0,
+        "street2": null,
         "notes": "Green door around the back",
         "city": "string",
         "state": "string",
