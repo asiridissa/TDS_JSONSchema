@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "title": "TDS TRCPSchema v0.1",
+  "title": "TDS TRCPSchema v0.4",
   "description": "Based on XML Schema tcrp.demandtrans.com_TCRPSchema V0.8-proposed",
   "type": "object",
   "additionalProperties": false,
@@ -15,7 +15,7 @@
           "type": "string",
           "enum": [ "Cancel", "Expire" ]
         },
-        "reasonDescription": { "type": "string" },
+        "reasonDescription": { "$ref": "#/$defs/stringNullable" },
         "canceledBy": {
           "type": "string",
           "enum": [ "OrderingClient", "Rider", "Provider" ]
@@ -30,33 +30,31 @@
       "properties": {
         "tripTicketId": { "$ref": "#/$defs/TripTicketIdProperty" },
         "pickupAddress": { "$ref": "#/$defs/AddressType" },
-        "detailedPickupLocationDescription": { "type": "string" },
+        "detailedPickupLocationDescription": { "$ref": "#/$defs/stringNullable" },
         "dropoffAddress": { "$ref": "#/$defs/AddressType" },
-        "detailedDropoffLocationDescription": { "type": "string" },
+        "detailedDropoffLocationDescription": { "$ref": "#/$defs/stringNullable" },
         "pickupTime": { "$ref": "#/$defs/Time" },
         "appointmentTime": { "$ref": "#/$defs/Time" },
         "dropoffTime": { "$ref": "#/$defs/Time" },
         "pickupWindowStartTime": { "$ref": "#/$defs/Time" },
         "pickupWindowEndTime": { "$ref": "#/$defs/Time" },
-        "detoursPermissible": { "type": "boolean" },
+        "detoursPermissible": { "$ref": "#/$defs/booleanNullable" },
         "negotiatedPickupTime": { "$ref": "#/$defs/Time" },
-        "hardConstraintOnPickupTime": { "type": "boolean" },
-        "hardConstraintOnDropoffTime": { "type": "boolean" },
+        "hardConstraintOnPickupTime": { "$ref": "#/$defs/booleanNullable" },
+        "hardConstraintOnDropoffTime": { "$ref": "#/$defs/booleanNullable" },
         "customerInfo": { "$ref": "#/$defs/CustomerInfoType" },
         "specialAttributes": { "$ref": "#/$defs/SpecialAttributesList" },
         "transportServices": { "$ref": "#/$defs/ValueList" },
-        "numOtherReservedPassengers": {
-          "type": "integer"
-        },
+        "numOtherReservedPassengers": { "$ref": "#/$defs/integerNullable" },
         "openAttribute": {
-          "type": "string",
-          "description": "Open attribute for local use"
+          "allOf": [
+            { "$ref": "#/$defs/stringNullable" },
+            { "description": "Open attribute for local use" }
+          ]
         },
         "tripPurpose": { "$ref": "#/$defs/TripPurposeList" },
-        "tripTransfer": { "type": [ "boolean", "null" ] },
-        "notesForDriver": {
-          "type": "string"
-        }
+        "tripTransfer": { "$ref": "#/$defs/booleanNullable" },
+        "notesForDriver": { "$ref": "#/$defs/stringNullable" }
       },
       "required": [ "tripTicketId" ]
     },
@@ -72,7 +70,7 @@
         "scheduledDropoffPoint": { "$ref": "#/$defs/AddressType" },
         "transferPoint": { "$ref": "#/$defs/AddressType" },
         "PaymentTypeList": { "$ref": "#/$defs/PaymentTypeList" },
-        "fareAmount": { "type": "integer" },
+        "fareAmount": { "$ref": "#/$defs/integerNullable" },
         "transportServices": {
           "$ref": "#/$defs/ValueList"
         }
@@ -104,41 +102,27 @@
         "scheduledDropoffPoint": { "$ref": "#/$defs/AddressType" },
         "transferPoint": { "$ref": "#/$defs/AddressType" },
         "paymentType": { "$ref": "#/$defs/PaymentTypeList" },
-        "fareAmount": { "type": "integer" },
+        "fareAmount": { "$ref": "#/$defs/integerNullable" },
         "transportServices": { "$ref": "#/$defs/ValueList" },
-        "vehicleNumber": { "type": "string" },
-        "driverId": { "type": "string" },
-        "driverName": { "type": "string" },
-        "vehicleInformation": { "type": "string" },
+        "vehicleNumber": { "$ref": "#/$defs/stringNullable" },
+        "driverId": { "$ref": "#/$defs/stringNullable" },
+        "driverName": { "$ref": "#/$defs/stringNullable" },
+        "vehicleInformation": { "$ref": "#/$defs/stringNullable" },
         "availabilityForService": { "$ref": "#/$defs/Time" },
-        "fuelRange": { "type": "integer" },
-        "ambulatorySpacePoints": {
-          "type": "integer"
-        },
-        "largeWheelchairSpacePoints": {
-          "type": "integer"
-        },
-        "hasRamp": { "type": "boolean" },
-        "hasLift": { "type": "boolean" },
-        "standardWheelchairSpacePoints": {
-          "type": "integer"
-        },
-        "cargoSpacePoints": {
-          "type": "integer"
-        },
-        "vehicleVIN": {
-          "type": "integer"
-        },
-        "vehicleModel": { "type": "string" },
-        "conversionFactorForAmbulatoryPointsToStandardWheelchairPoints": {
-          "type": "integer"
-        },
-        "conversionFactorForAmbulatoryPointsToLargeWheelchairPoints": { "type": "integer" },
-        "flatFloor": { "type": "string" },
-        "owner": { "type": "string" },
-        "rideVibrationQuality": {
-          "type": "string"
-        }
+        "fuelRange": { "$ref": "#/$defs/integerNullable" },
+        "ambulatorySpacePoints": { "$ref": "#/$defs/integerNullable" },
+        "largeWheelchairSpacePoints": { "$ref": "#/$defs/integerNullable" },
+        "hasRamp": { "$ref": "#/$defs/booleanNullable" },
+        "hasLift": { "$ref": "#/$defs/booleanNullable" },
+        "standardWheelchairSpacePoints": { "$ref": "#/$defs/integerNullable" },
+        "cargoSpacePoints": { "$ref": "#/$defs/integerNullable" },
+        "vehicleVIN": { "$ref": "#/$defs/integerNullable" },
+        "vehicleModel": { "$ref": "#/$defs/stringNullable" },
+        "conversionFactorForAmbulatoryPointsToStandardWheelchairPoints": { "$ref": "#/$defs/integerNullable" },
+        "conversionFactorForAmbulatoryPointsToLargeWheelchairPoints": { "$ref": "#/$defs/integerNullable" },
+        "flatFloor": { "$ref": "#/$defs/stringNullable" },
+        "owner": { "$ref": "#/$defs/stringNullable" },
+        "rideVibrationQuality": { "$ref": "#/$defs/stringNullable" }
       },
       "required": [ "tripTicketId" ]
     },
@@ -148,7 +132,7 @@
       "description": "The coordinates for the address and potentially a known zone",
       "properties": {
         "vehicleDistance": { "$ref": "#/$defs/VehicleDistance" },
-        "zone": { "type": "string" },
+        "zone": { "$ref": "#/$defs/stringNullable" },
         "typeOfCoordinate": {
           "type": "string",
           "description": "Shall be of type WGS84",
@@ -162,27 +146,34 @@
           "description": "Precision shall be from GPS-unit in vehicle and measured in meter. This is the deviation in position measured by the &gt;GPS-unit."
         },
         "speed": {
-          "type": "number",
-          "format": "float",
-          "description": "Speed shall be from GPS-unit in vehicle and measured in meter per second."
+          "allOf": [
+            { "$ref": "#/$defs/floatNullable" },
+            {
+              "description": "Speed shall be from GPS-unit in vehicle and measured in meter per second."
+            }
+          ]
         },
         "speedSource": {
           "description": "Speed measured at GPS or VEHICLE.",
           "enum": [ "gpsunit", "taximeter" ]
         },
         "direction": {
-          "type": "integer",
-          "description": "Direction shall be from GPS-unit in vehichle and measured in degrees (0 - 360 degrees)"
+          "allOf": [
+            { "$ref": "#/$defs/integerNullable" },
+            { "description": "Direction shall be from GPS-unit in vehichle and measured in degrees (0 - 360 degrees)" }
+          ]
         },
         "height": {
-          "type": "number",
-          "format": "float",
-          "description": "Height shall be from GPS-unit in vehicle and measured in meter. May be measured in meter with decimals."
+          "allOf": [
+            { "$ref": "#/$defs/floatNullable" },
+            { "description": "Height shall be from GPS-unit in vehicle and measured in meter. May be measured in meter with decimals." }
+          ]
         },
         "deviationSpeed": {
-          "type": "number",
-          "format": "float",
-          "description": "Deviation in speed"
+          "allOf": [
+            { "$ref": "#/$defs/floatNullable" },
+            { "description": "Deviation in speed" }
+          ]
         }
       },
       "required": [ "typeOfCoordinate" ]
@@ -204,24 +195,26 @@
         },
         "pickupNodeAddress": { "$ref": "#/$defs/AddressType" },
         "pickupNodeScheduledTime": { "$ref": "#/$defs/Time" },
-        "detailedPickupLocationDescription": { "type": "string" },
+        "detailedPickupLocationDescription": { "$ref": "#/$defs/stringNullable" },
         "customerDropoffLocInVehPerformanceSequence": {
           "type": "integer",
           "minimum": 0
         },
         "dropoffNodeAddress": { "$ref": "#/$defs/AddressType" },
         "dropoffNodeScheduledTime": { "$ref": "#/$defs/Time" },
-        "detailedDropoffLocationDescription": { "type": "string" },
-        "customerMobilePhone": { "type": "integer" },
+        "detailedDropoffLocationDescription": { "$ref": "#/$defs/stringNullable" },
+        "customerMobilePhone": { "$ref": "#/$defs/integerNullable" },
         "customerName": { "type": "string" },
-        "numOtherReservedPassengers": { "type": "integer" },
+        "numOtherReservedPassengers": { "$ref": "#/$defs/integerNullable" },
         "notesForDriver": {
-          "type": "string",
-          "description": "Free-form long text field for notes to driver concerning customer service needs"
+          "allOf": [
+            { "$ref": "#/$defs/stringNullable" },
+            { "description": "Free-form long text field for notes to driver concerning customer service needs" }
+          ]
         },
         "specialAttributes": { "$ref": "#/$defs/SpecialAttributesList" },
         "paymentType": { "$ref": "#/$defs/PaymentTypeList" },
-        "fareAmount": { "type": "integer" }
+        "fareAmount": { "$ref": "#/$defs/integerNullable" }
       },
       "required": [ "tripTicketId" ]
     },
@@ -241,14 +234,12 @@
           "minimum": 0
         },
         "nodePerformedTime": { "$ref": "#/$defs/Time" },
-        "vehicleNumber": { "type": "string" },
+        "vehicleNumber": { "$ref": "#/$defs/stringNullable" },
         "tripStatus": {
           "type": "string",
           "enum": [ "performed", "no show", "no pickup" ]
         },
-        "driverId": {
-          "type": "string"
-        }
+        "driverId": { "$ref": "#/$defs/stringNullable" }
       },
       "required": [ "tripTicketId", "tripStatus" ]
     },
@@ -263,13 +254,13 @@
         "performedPickupTime": { "$ref": "#/$defs/Time" },
         "performedDropoffPoint": { "$ref": "#/$defs/AddressType" },
         "performedDropoffTime": { "$ref": "#/$defs/Time" },
-        "performedDistance": { "type": "integer" },
+        "performedDistance": { "$ref": "#/$defs/integerNullable" },
         "performedDistanceUnit": { "$ref": "#/$defs/DistanceUnitList" },
-        "performedDurationInMinutes": { "type": "integer" },
-        "detourOccur": { "type": "boolean" },
+        "performedDurationInMinutes": { "$ref": "#/$defs/integerNullable" },
+        "detourOccur": { "$ref": "#/$defs/booleanNullable" },
         "transferPoint": { "$ref": "#/$defs/AddressType" },
         "paymentType": { "$ref": "#/$defs/PaymentTypeList" },
-        "fareAmount": { "type": "integer" },
+        "fareAmount": { "$ref": "#/$defs/integerNullable" },
         "specialAttributes": { "$ref": "#/$defs/SpecialAttributesList" },
         "transportServices": { "$ref": "#/$defs/ValueList" }
       },
@@ -288,7 +279,7 @@
           "type": "string",
           "format": "date"
         },
-        "note": { "type": "string" },
+        "note": { "$ref": "#/$defs/stringNullable" },
         "customerInfo": {
           "$ref": "#/$defs/CustomerInfoType"
         }
@@ -304,9 +295,9 @@
           "type": "string",
           "description": "unique ID from ordering client"
         },
-        "referralResponseType": { "type": "string" },
+        "referralResponseType": { "$ref": "#/$defs/stringNullable" },
         "note": {
-          "type": "string"
+          "$ref": "#/$defs/stringNullable"
         }
       },
       "required": [ "customerReferralId" ]
@@ -317,52 +308,45 @@
     "TripTicketIdProperty": {
       "type": "string",
       "format": "uuid",
-      "description": "Unique ID from ordering client",
-      "minLength": 1
+      "description": "Unique ID from ordering client"
     },
 
     "CustomerInfoType": {
       "type": "object",
       "properties": {
         "tripTicketId": { "$ref": "#/$defs/TripTicketIdProperty" },
-        "firstLegalName": { "type": "string" },
-        "nickName": { "type": "string" },
-        "middleName": { "type": "string" },
-        "lastName": { "type": "string" },
+        "firstLegalName": { "$ref": "#/$defs/stringNullable" },
+        "nickName": { "$ref": "#/$defs/stringNullable" },
+        "middleName": { "$ref": "#/$defs/stringNullable" },
+        "lastName": { "$ref": "#/$defs/stringNullable" },
         "address": { "$ref": "#/$defs/AddressType" },
-        "phone": {
-          "type": "integer"
-        },
-        "mobilePhone": {
-          "type": "integer"
-        },
+        "phone": { "$ref": "#/$defs/integerNullable" },
+        "mobilePhone": { "$ref": "#/$defs/integerNullable" },
         "mailingBillingAddress": { "$ref": "#/$defs/AddressType" },
-        "fundingEntityBillingInformation": { "type": "string" },
-        "fundingType": { "type": "boolean" },
+        "fundingEntityBillingInformation": { "$ref": "#/$defs/stringNullable" },
+        "fundingType": { "$ref": "#/$defs/booleanNullable" },
         "fundingEntityId": { "type": "string" },
-        "gender": { "type": "string" },
-        "lowIncome": { "type": "boolean" },
-        "disability": { "type": "boolean" },
-        "language": { "type": "string" },
-        "race": { "type": "string" },
-        "ethnicity": { "type": "boolean" },
-        "emailAddress": { "type": "string" },
-        "veteran": { "type": "string" },
-        "caregiverContactInformation": { "type": "string" },
-        "emergencyPhoneNumber": {
-          "type": "integer"
-        },
-        "emergencyContactName": { "type": "string" },
-        "emergencyContactRelationship": { "type": "string" },
-        "requiredCareComments": { "type": "string" },
+        "gender": { "$ref": "#/$defs/stringNullable" },
+        "lowIncome": { "$ref": "#/$defs/booleanNullable" },
+        "disability": { "$ref": "#/$defs/booleanNullable" },
+        "language": { "$ref": "#/$defs/stringNullable" },
+        "race": { "$ref": "#/$defs/stringNullable" },
+        "ethnicity": { "$ref": "#/$defs/booleanNullable" },
+        "emailAddress": { "$ref": "#/$defs/stringNullable" },
+        "veteran": { "$ref": "#/$defs/stringNullable" },
+        "caregiverContactInformation": { "$ref": "#/$defs/stringNullable" },
+        "emergencyPhoneNumber": { "$ref": "#/$defs/integerNullable" },
+        "emergencyContactName": { "$ref": "#/$defs/stringNullable" },
+        "emergencyContactRelationship": { "$ref": "#/$defs/stringNullable" },
+        "requiredCareComments": { "$ref": "#/$defs/stringNullable" },
         "dateOfBirth": {
-          "type": "string",
-          "format": "date"
+          "allOf": [
+            { "$ref": "#/$defs/stringNullable" },
+            { "format": "date" }
+          ]
         },
-        "customerId": { "type": "string" },
-        "notesForDriver": {
-          "type": "string"
-        }
+        "customerId": { "$ref": "#/$defs/stringNullable" },
+        "notesForDriver": { "$ref": "#/$defs/stringNullable" }
       }
     },
 
@@ -371,22 +355,41 @@
       "description": "The address known to receiving system",
       "properties": {
         "addressName": {
-          "type": "string",
-          "example": "McDonalds",
-          "minLength": 1
+          "allOf": [
+            { "$ref": "#/$defs/stringNotEmpty" },
+            { "example": "McDonalds" }
+          ]
         },
-        "street": { "type": "string", "minLength": 1 },
-        "street2": { "type": [ "string", "null" ] },
+        "street": { "$ref": "#/$defs/stringNotEmpty" },
+        "street2": { "$ref": "#/$defs/stringNullable" },
         "notes": {
-          "type": "string",
-          "example": "Green door around the back"
+          "allOf": [
+            { "$ref": "#/$defs/stringNullable" },
+            { "example": "Green door around the back" }
+          ]
         },
-        "city": { "type": "string", "minLength": 1 },
-        "state": { "type": "string", "minLength": 1 },
-        "postalCode": { "type": "string", "minLength": 1 },
-        "country": { "type": "string", "minLength": 1 },
-        "lat": { "type": "integer", "minimim": -180, "maxumim": 180 },
-        "long": { "type": "integer", "minimim": -180, "maxumim": 180 }
+        "city": { "$ref": "#/$defs/stringNotEmpty" },
+        "state": { "$ref": "#/$defs/stringNotEmpty" },
+        "postalCode": { "$ref": "#/$defs/stringNotEmpty" },
+        "country": { "$ref": "#/$defs/stringNotEmpty" },
+        "lat": {
+          "allOf": [
+            { "$ref": "#/$defs/integerNullable" },
+            {
+              "minimum": -90,
+              "maximum": 90
+            }
+          ]
+        },
+        "long": {
+          "allOf": [
+            { "$ref": "#/$defs/integerNullable" },
+            {
+              "minimum": -180,
+              "maximum": 180
+            }
+          ]
+        }
       },
       "required": [ "addressName", "street", "city", "state", "postalCode", "country" ]
     },
@@ -395,27 +398,33 @@
       "type": "object",
       "description": "Should normally be the local time.",
       "properties": {
-        "TimeAccuracy": {
-          "type": "string",
-          "description": "Used to indicate accepted deviation in attribute time"
+        "timeAccuracy": {
+          "allOf": [
+            { "$ref": "#/$defs/stringNullable" },
+            { "description": "Used to indicate accepted deviation in attribute time" }
+          ]
         },
         "time": {
           "type": "string",
           "format": "date-time",
           "description": "Timezone used in comunication. Default is local timezone. See ISO 8601 for more information."
         },
-        "DwellTime": {
-          "type": "integer",
-          "description": "Time used to finish this node"
+        "dwellTime": {
+          "allOf": [
+            { "$ref": "#/$defs/integerNullable" },
+            { "description": "Time used to finish this node" }
+          ]
         },
-        "TimeType": { "$ref": "#/$defs/TimeType" }
+        "timeType": { "$ref": "#/$defs/TimeType" }
       },
       "required": [ "time" ]
     },
 
     "TimeType": {
-      "type": "string",
-      "enum": [ "Time2101", "ScheduledTime", "Time2102", "EstimatedTime", "Time2103", "PromisedTime", "Time2104", "Actual", "Time2105", "Scheduled", "Time2107", "Estimated", "Time2106", "Promised", "Time2108", "Asap", "EstimatedEndTime", "EstimatedStartTime" ]
+      "allOf": [
+        { "$ref": "#/$defs/stringNullable" },
+        { "enum": [ "Time2101", "ScheduledTime", "Time2102", "EstimatedTime", "Time2103", "PromisedTime", "Time2104", "Actual", "Time2105", "Scheduled", "Time2107", "Estimated", "Time2106", "Promised", "Time2108", "Asap", "EstimatedEndTime", "EstimatedStartTime" ] }
+      ]
     },
 
     "DistanceUnitList": {
@@ -484,6 +493,22 @@
           "enum": [ "meter", "seconds" ]
         }
       }
+    },
+
+    "stringNullable": { "type": [ "string", "null" ] },
+
+    "booleanNullable": { "type": [ "boolean", "null" ] },
+
+    "integerNullable": { "type": [ "integer", "null" ] },
+
+    "floatNullable": {
+      "type": [ "number", "null" ],
+      "format": "float"
+    },
+
+    "stringNotEmpty": {
+      "type": [ "string" ],
+      "minLength": 1
     }
   }
 }
